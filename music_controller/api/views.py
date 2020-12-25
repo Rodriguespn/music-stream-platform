@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import RoomSerializer, CreateRoomSerializer
+from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer
 from .models import Room
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -109,3 +109,10 @@ class LeaveRoom(APIView):
         return Response({
                             'Message': 'Success'
                         }, status=status.HTTP_200_OK)
+
+
+class UpdateView(APIView):
+    serializer_class = UpdateRoomSerializer
+
+    def patch(self, request, format=None):
+        pass
